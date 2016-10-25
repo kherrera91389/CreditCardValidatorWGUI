@@ -15,26 +15,34 @@ public class CCValidator extends JFrame
     private JPanel rootPanel;
     private JLabel validMessageLabel;
     public CCValidator(){
+        //provide title for app display
         super("CreditCardValidatorWGUI");
         setContentPane(rootPanel);
         pack();
+        //set default close operation
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //make form visible
         setVisible(true);
-
+        //code to handle click event for validate button
         validateButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             {
+                //get user intput from text box
                 String ccNumber = creditCardNumberTextField.getText();
+                //call validator method
                 boolean valid = isVisaCreditCardNumber(ccNumber);
+                //user ternary to set output message
                 String isValid= valid ? "Credit card number is valid":
                         "Credit card number is not valid";
+                //display message in text box
                 validMessageLabel.setText(isValid);
 
 
             }
         });
+        //quit button click event
         quitButton.addActionListener(new ActionListener()
         {
             @Override
@@ -53,6 +61,7 @@ public class CCValidator extends JFrame
             }
         });
     }
+    //method to validate cc number
     private static boolean isVisaCreditCardNumber(String cc){
 
 
@@ -100,7 +109,7 @@ public class CCValidator extends JFrame
                 return false;
             }
         } else {
-            System.out.println("Your entry is too short");
+            //System.out.println("Your entry is too short");
             return false;
         }
     }
